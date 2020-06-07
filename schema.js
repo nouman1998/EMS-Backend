@@ -7,6 +7,8 @@ const schema = buildSchema(`
     }
     type Mutation{
         addemployee(id: Int!, did: Int!, userid: Int!, jobcode: String!, resume: String!, joiningdate: String!): Employee!
+        updateemployee(id: Int!, did: Int, userid: Int, jobcode: String, resume: String, joiningdate: String): Employee!
+        deleteemployee(id: Int!): String!
     }
     type Employee {
             id: Int!

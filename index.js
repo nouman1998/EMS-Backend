@@ -9,7 +9,7 @@ app.use(
 	"/gapi",
 	express_graphql({
 		schema: schema,
-		rootValue: root,
+		rootValue: root, //resolvers
 		graphiql: true,
 	})
 );

@@ -1,38 +1,6 @@
 {
   "employees": [
     {
-      "id": 1,
-      "did": 1,
-      "userid": 1,
-      "jobcode": "sm",
-      "resume": "path",
-      "joiningdate": "date"
-    },
-    {
-      "id": 3,
-      "did": 3,
-      "userid": 3,
-      "jobcode": "smb",
-      "resume": "path",
-      "joiningdate": "date"
-    },
-    {
-      "id": 20,
-      "did": 20,
-      "userid": 20,
-      "jobcode": "boss",
-      "resume": "drivepath",
-      "joiningdate": "20-12-2020"
-    },
-    {
-      "id": 30,
-      "did": 20,
-      "userid": 20,
-      "jobcode": "boss",
-      "resume": "drivepath",
-      "joiningdate": "20-12-2020"
-    },
-    {
       "id": 40,
       "did": 20,
       "userid": 20,
@@ -41,17 +9,17 @@
       "joiningdate": "20-12-2020"
     },
     {
-      "id": 50,
-      "did": 20,
-      "userid": 20,
+      "id": 1,
+      "did": 3,
+      "userid": 2,
       "jobcode": "boss",
       "resume": "drivepath",
       "joiningdate": "20-12-2020"
     },
     {
-      "id": 500,
-      "did": 20,
-      "userid": 20,
+      "id": 2,
+      "did": 3,
+      "userid": 2,
       "jobcode": "boss",
       "resume": "drivepath",
       "joiningdate": "20-12-2020"
