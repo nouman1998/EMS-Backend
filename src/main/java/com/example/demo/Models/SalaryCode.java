@@ -1,9 +1,7 @@
 package com.example.demo.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class SalaryCode {
@@ -15,15 +13,31 @@ public class SalaryCode {
     String codeDescription;
     Long grossAmount;
 
+    @OneToMany(mappedBy = "salaryCode")
+    List<Employee> emp;
     public SalaryCode() {
     }
 
-    public SalaryCode(Long id, String salaryCode, Long basicSalary, String codeDescription, Long grossAmount) {
+    @OneToMany(mappedBy = "salaryCodes")
+    List<Allowance> allowances;
+
+
+    public SalaryCode(Long id, String salaryCode, Long basicSalary, String codeDescription, Long grossAmount, List<Employee> emp, List<Allowance> allowances) {
         this.id = id;
         this.salaryCode = salaryCode;
         this.basicSalary = basicSalary;
         this.codeDescription = codeDescription;
         this.grossAmount = grossAmount;
+        this.emp = emp;
+        this.allowances = allowances;
+    }
+
+    public List<Employee> getEmp() {
+        return emp;
+    }
+
+    public void setEmp(List<Employee> emp) {
+        this.emp = emp;
     }
 
     public Long getId() {
@@ -64,5 +78,13 @@ public class SalaryCode {
 
     public void setGrossAmount(Long grossAmount) {
         this.grossAmount = grossAmount;
+    }
+
+    public List<Allowance> getAllowances() {
+        return allowances;
+    }
+
+    public void setAllowances(List<Allowance> allowances) {
+        this.allowances = allowances;
     }
 }
