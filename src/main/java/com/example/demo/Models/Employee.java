@@ -1,9 +1,7 @@
 package com.example.demo.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Employee {
@@ -18,10 +16,21 @@ public class Employee {
     String resume;
     Long allowances;
 
+
+    @ManyToOne()
+    private Department depart;
+
+    @ManyToOne
+    private SalaryCode salaryCode;
+
+    @ManyToOne
+    private Job job;
+
+
     public Employee() {
     }
 
-    public Employee(Long id, String name, Long mobileNumber, String email, String address, Long pay, String resume, Long allowances) {
+    public Employee(Long id, String name, Long mobileNumber, String email, String address, Long pay, String resume, Long allowances, Department depart, SalaryCode salaryCode, Job job) {
         this.id = id;
         this.name = name;
         this.mobileNumber = mobileNumber;
@@ -30,6 +39,9 @@ public class Employee {
         this.pay = pay;
         this.resume = resume;
         this.allowances = allowances;
+        this.depart = depart;
+        this.salaryCode = salaryCode;
+        this.job = job;
     }
 
     public Long getId() {
@@ -94,5 +106,30 @@ public class Employee {
 
     public void setAllowances(Long allowances) {
         this.allowances = allowances;
+    }
+
+
+    public Department getDepart() {
+        return depart;
+    }
+
+    public void setDepart(Department depart) {
+        this.depart = depart;
+    }
+
+    public SalaryCode getSalaryCode() {
+        return salaryCode;
+    }
+
+    public void setSalaryCode(SalaryCode salaryCode) {
+        this.salaryCode = salaryCode;
+    }
+
+    public Job getJob() {
+        return job;
+    }
+
+    public void setJob(Job job) {
+        this.job = job;
     }
 }

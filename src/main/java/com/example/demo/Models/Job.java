@@ -1,9 +1,7 @@
 package com.example.demo.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Job {
@@ -20,13 +18,26 @@ public class Job {
     public Job() {
     }
 
-    public Job(Long id, String jobCode, String jobTitle, String jobRole, String jobDuties, String jobDescription) {
+    @OneToMany(mappedBy = "job")
+    private List<Employee> emp;
+
+
+    public Job(Long id, String jobCode, String jobTitle, String jobRole, String jobDuties, String jobDescription, List<Employee> emp) {
         this.id = id;
         this.jobCode = jobCode;
         this.jobTitle = jobTitle;
         this.jobRole = jobRole;
         this.jobDuties = jobDuties;
         this.jobDescription = jobDescription;
+        this.emp = emp;
+    }
+
+    public List<Employee> getEmp() {
+        return emp;
+    }
+
+    public void setEmp(List<Employee> emp) {
+        this.emp = emp;
     }
 
     public Long getId() {

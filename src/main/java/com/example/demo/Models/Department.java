@@ -1,9 +1,7 @@
 package com.example.demo.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Department {
@@ -13,13 +11,19 @@ public class Department {
     String name;
     String desription;
 
+@OneToMany(mappedBy = "depart")
+private List<Employee> emp;
+
     public Department() {
     }
 
-    public Department(Long id, String name, String desription) {
+
+
+    public Department(Long id, String name, String desription, List<Employee> emp) {
         this.id = id;
         this.name = name;
         this.desription = desription;
+        this.emp = emp;
     }
 
     public Long getId() {
@@ -44,6 +48,14 @@ public class Department {
 
     public void setDesription(String desription) {
         this.desription = desription;
+    }
+
+    public List<Employee> getEmp() {
+        return emp;
+    }
+
+    public void setEmp(List<Employee> emp) {
+        this.emp = emp;
     }
 }
 
