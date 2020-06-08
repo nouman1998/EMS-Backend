@@ -50,12 +50,12 @@ public class Department {
         this.desription = desription;
     }
 
-    public List<Employee> getEmp() {
-        return emp;
-    }
-
-    public void setEmp(List<Employee> emp) {
-        this.emp = emp;
-    }
+//    public List<Employee> getEmp() {
+//        return emp;
+//    }
+//
+//    public void setEmp(List<Employee> emp) {
+//        this.emp = emp;
+//    }
 }
 

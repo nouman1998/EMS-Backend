@@ -1,10 +1,15 @@
 package com.example.demo.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.persistence.ManyToOne;
 
 @Entity
 public class Allowance {
+
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long allowanceId;
@@ -12,6 +17,8 @@ public class Allowance {
     private String  amountType;
     private  Integer amount;
 
+
+    @JsonBackReference
     @ManyToOne
     private  SalaryCode salaryCodes;
 
@@ -67,4 +74,5 @@ public class Allowance {
     public void setSalaryCodes(SalaryCode salaryCodes) {
         this.salaryCodes = salaryCodes;
     }
+
 }
