@@ -1,9 +1,7 @@
 package com.example.demo.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class LeaveCode {
@@ -13,13 +11,17 @@ public class LeaveCode {
     String leaveCode;
     String maxLeaves;
 
+    @OneToMany(mappedBy = "leaveCode")
+    private List<Employee> emp;
+
     public LeaveCode() {
     }
 
-    public LeaveCode(Long id, String leaveCode, String maxLeaves) {
+    public LeaveCode(Long id, String leaveCode, String maxLeaves, List<Employee> emp) {
         this.id = id;
         this.leaveCode = leaveCode;
         this.maxLeaves = maxLeaves;
+        this.emp = emp;
     }
 
     public Long getId() {
@@ -44,5 +46,13 @@ public class LeaveCode {
 
     public void setMaxLeaves(String maxLeaves) {
         this.maxLeaves = maxLeaves;
+    }
+
+    public List<Employee> getEmp() {
+        return emp;
+    }
+
+    public void setEmp(List<Employee> emp) {
+        this.emp = emp;
     }
 }

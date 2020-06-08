@@ -1,5 +1,7 @@
 package com.example.demo.Models;
 
+
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,17 +11,18 @@ public class Job {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+
     String jobCode;
     String jobTitle;
     String jobRole;
     String jobDuties;
     String jobDescription;
 
-    public Job() {
-    }
-
     @OneToMany(mappedBy = "job")
     private List<Employee> emp;
+
+    public Job() {
+    }
 
 
     public Job(Long id, String jobCode, String jobTitle, String jobRole, String jobDuties, String jobDescription, List<Employee> emp) {

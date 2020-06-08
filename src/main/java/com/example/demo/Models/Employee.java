@@ -14,7 +14,6 @@ public class Employee {
     String address;
     Long pay;
     String resume;
-    Long allowances;
 
 
     @ManyToOne()
@@ -26,11 +25,14 @@ public class Employee {
     @ManyToOne
     private Job job;
 
+    @ManyToOne
+    private LeaveCode leaveCode;
+
 
     public Employee() {
     }
 
-    public Employee(Long id, String name, Long mobileNumber, String email, String address, Long pay, String resume, Long allowances, Department depart, SalaryCode salaryCode, Job job) {
+    public Employee(Long id, String name, Long mobileNumber, String email, String address, Long pay, String resume, Department depart, SalaryCode salaryCode, Job job, LeaveCode leaveCode) {
         this.id = id;
         this.name = name;
         this.mobileNumber = mobileNumber;
@@ -38,10 +40,11 @@ public class Employee {
         this.address = address;
         this.pay = pay;
         this.resume = resume;
-        this.allowances = allowances;
+
         this.depart = depart;
         this.salaryCode = salaryCode;
         this.job = job;
+        this.leaveCode =leaveCode;
     }
 
     public Long getId() {
@@ -100,15 +103,6 @@ public class Employee {
         this.resume = resume;
     }
 
-    public Long getAllowances() {
-        return allowances;
-    }
-
-    public void setAllowances(Long allowances) {
-        this.allowances = allowances;
-    }
-
-
     public Department getDepart() {
         return depart;
     }
@@ -131,5 +125,13 @@ public class Employee {
 
     public void setJob(Job job) {
         this.job = job;
+    }
+
+    public LeaveCode getLeaveCode() {
+        return leaveCode;
+    }
+
+    public void setLeaveCode(LeaveCode leaveCode) {
+        this.leaveCode = leaveCode;
     }
 }
