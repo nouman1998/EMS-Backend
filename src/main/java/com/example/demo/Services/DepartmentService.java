@@ -19,7 +19,7 @@ public class DepartmentService {
     public ApiResponse postDepartment(DepartmentDTO departmentDTO) {
 
         Department dpt = new Department();
-        dpt.setDesription(departmentDTO.getDescription());
+        dpt.setDescription(departmentDTO.getDescription());
         dpt.setName(departmentDTO.getName());
         return new ApiResponse(Status.Status_Ok,"Posted Sucessfully",departmentRepository.save(dpt));
 
@@ -45,7 +45,7 @@ public class DepartmentService {
         Department dpt = new Department();
         dpt.setId(id);
         dpt.setName(departmentDTO.getName());
-        dpt.setDesription(departmentDTO.getDescription());
+        dpt.setDescription(departmentDTO.getDescription());
         departmentRepository.save(dpt);
         return new ApiResponse(Status.Status_Ok,"Updated Successfully",departmentRepository.findById(id));
     }
