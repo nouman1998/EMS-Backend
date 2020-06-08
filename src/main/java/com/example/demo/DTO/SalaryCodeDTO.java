@@ -1,19 +1,27 @@
 package com.example.demo.DTO;
 
+import com.example.demo.Models.Employee;
+
+import java.util.List;
+
 public class SalaryCodeDTO {
     String salaryCode;
     Long basicSalary;
     String codeDescription;
     Long grossAmount;
 
+    private List<Employee> emp;
+
+
     public SalaryCodeDTO() {
     }
 
-    public SalaryCodeDTO(String salaryCode, Long basicSalary, String codeDescription, Long grossAmount) {
+    public SalaryCodeDTO(String salaryCode, Long basicSalary, String codeDescription, Long grossAmount, List<Employee> emp) {
         this.salaryCode = salaryCode;
         this.basicSalary = basicSalary;
         this.codeDescription = codeDescription;
         this.grossAmount = grossAmount;
+        this.emp = emp;
     }
 
     public String getSalaryCode() {
@@ -46,5 +54,13 @@ public class SalaryCodeDTO {
 
     public void setGrossAmount(Long grossAmount) {
         this.grossAmount = grossAmount;
+    }
+
+    public List<Employee> getEmp() {
+        return emp;
+    }
+
+    public void setEmp(List<Employee> emp) {
+        this.emp = emp;
     }
 }
