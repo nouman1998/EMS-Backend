@@ -17,17 +17,15 @@ public class SalaryCodeDTO {
     public SalaryCodeDTO() {
     }
 
-    public SalaryCodeDTO(String code, Long basicSalary, String codeDescription, Long grossAmount) {
-        this.code = code;
+
 
     private List<Employee> emp;
 
 
-    public SalaryCodeDTO() {
-    }
 
-    public SalaryCodeDTO(String salaryCode, Long basicSalary, String codeDescription, Long grossAmount, List<Employee> emp) {
-        this.salaryCode = salaryCode;
+
+    public SalaryCodeDTO(String code, Long basicSalary, String codeDescription, Long grossAmount, List<Employee> emp) {
+        this.code = code;
 
         this.basicSalary = basicSalary;
         this.codeDescription = codeDescription;
@@ -74,7 +72,7 @@ public class SalaryCodeDTO {
 
     public void setAllowances(List<Allowance> allowances) {
         this.allowances = allowances;
-
+    }
     public List<Employee> getEmp() {
         return emp;
     }
