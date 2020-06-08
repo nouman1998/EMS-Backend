@@ -11,8 +11,8 @@ public class Department {
     String name;
     String desription;
 
-@OneToMany(mappedBy = "depart")
-private List<Employee> emp;
+ @OneToMany(mappedBy = "depart")
+  private List<Employee> emp;
 
     public Department() {
     }
