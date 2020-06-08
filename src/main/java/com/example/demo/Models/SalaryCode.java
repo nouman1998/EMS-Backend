@@ -19,11 +19,13 @@ public class SalaryCode {
 
     @OneToMany(mappedBy = "salaryCode")
     List<Employee> emp;
-    public SalaryCode() {
-    }
+
     @JsonManagedReference
     @OneToMany(mappedBy = "salaryCodes")
     List<Allowance> allowances;
+
+    public SalaryCode() {
+    }
 
 
     public SalaryCode(Long id, String code, Long basicSalary, String codeDescription, Long grossAmount, List<Employee> emp, List<Allowance> allowances) {

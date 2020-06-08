@@ -10,14 +10,15 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/department")
 public class DepartmentController {
-@Autowired
+    @Autowired
     DepartmentService departmentService;
-@GetMapping("/")
+
+    @GetMapping("/")
     public ApiResponse getAllDepartments(){
        return departmentService.getAllDepartments();
     }
 
-    @PostMapping("/")
+    @PostMapping("/post")
     public ApiResponse postDepartment(@RequestBody DepartmentDTO departmentDTO){
     return departmentService.postDepartment(departmentDTO);
     }
@@ -26,6 +27,7 @@ public class DepartmentController {
     public ApiResponse getDepartmentById(@PathVariable("id") Long id){
             return departmentService.getById(id);
     }
+
     @DeleteMapping("{id}")
         public ApiResponse deleteDepartmentById(@PathVariable("id")Long id)
         {
@@ -38,7 +40,7 @@ public class DepartmentController {
      }
 
      @PutMapping("/{id}")
-    public ApiResponse updateById(@PathVariable("id")Long id,@RequestBody DepartmentDTO departmentDTO){
+     public ApiResponse updateById(@PathVariable("id")Long id,@RequestBody DepartmentDTO departmentDTO){
         return departmentService.updateById(id,departmentDTO);
      }
 }
