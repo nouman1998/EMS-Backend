@@ -1,14 +1,18 @@
 package com.example.demo.Models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class SalaryCode {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    String salaryCode;
+    String code;
     Long basicSalary;
     String codeDescription;
     Long grossAmount;
@@ -17,14 +21,14 @@ public class SalaryCode {
     List<Employee> emp;
     public SalaryCode() {
     }
-
+    @JsonManagedReference
     @OneToMany(mappedBy = "salaryCodes")
     List<Allowance> allowances;
 
 
-    public SalaryCode(Long id, String salaryCode, Long basicSalary, String codeDescription, Long grossAmount, List<Employee> emp, List<Allowance> allowances) {
+    public SalaryCode(Long id, String code, Long basicSalary, String codeDescription, Long grossAmount, List<Employee> emp, List<Allowance> allowances) {
         this.id = id;
-        this.salaryCode = salaryCode;
+        this.code = code;
         this.basicSalary = basicSalary;
         this.codeDescription = codeDescription;
         this.grossAmount = grossAmount;
@@ -48,12 +52,12 @@ public class SalaryCode {
         this.id = id;
     }
 
-    public String getSalaryCode() {
-        return salaryCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setSalaryCode(String salaryCode) {
-        this.salaryCode = salaryCode;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public Long getBasicSalary() {
