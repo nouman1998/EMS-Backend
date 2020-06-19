@@ -3,8 +3,14 @@ package com.example.demo.Respositories;
 
 import com.example.demo.Models.Allowance;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface AllowanceRepository extends JpaRepository<Allowance,Long> {
+
+    @Query(value = "select * from ems.allowance where salary_codes_id=:id",nativeQuery = true)
+    List<Allowance> getBYSalaryID(Long id);
 }
