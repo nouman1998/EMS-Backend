@@ -66,17 +66,19 @@ public class SalaryCodeService {
         salaryCode.setBasicSalary(salaryCodeDTO.getBasicSalary());
         salaryCode.setId(id);
         Allowance allowance = new Allowance();
-
-
+        Integer i=0;
+        List<Allowance> repoAllowances=this.getBySalaryId(id);
         for(Allowance abc :salaryCodeDTO.getAllowances())
         {
-            allowance.setAllowanceId(abc.getAllowanceId());
+
+            allowance.setAllowanceId(repoAllowances.get(i).getAllowanceId());
             allowance.setAmount(abc.getAmount());
             allowance.setAmountType(abc.getAmountType());
             allowance.setPreFrequency(abc.getPreFrequency());
             allowance.setSalaryCodes(salaryCode);
             allowances.add(allowance);
             allowanceRepository.save(allowance);
+            i++;
 
         }
         salaryCode.setAllowances(allowances);
@@ -113,6 +115,11 @@ public class SalaryCodeService {
         allowanceRepository.deleteAll();;
         salaryCodeRepository.deleteAll();
         return  new ApiResponse(Status.Status_Ok,"Deleted Sucessfully ",salaryCodeRepository.findAll());
+
+    }
+
+    public List<Allowance> getBySalaryId(Long id){
+       return allowanceRepository.getBYSalaryID(id);
 
     }
 }
