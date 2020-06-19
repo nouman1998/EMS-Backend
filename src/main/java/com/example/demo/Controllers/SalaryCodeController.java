@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/salary-code")
+@RequestMapping("/api/salarycode")
 public class SalaryCodeController {
 @Autowired
     SalaryCodeService salaryCodeService;
-    @PostMapping("/")
-    public ApiResponse postSalaryCode(@RequestBody SalaryCodeDTO salaryCodeDTO)
-    {
+
+    @PostMapping("/post")
+    public ApiResponse postSalaryCode(@RequestBody SalaryCodeDTO salaryCodeDTO) {
         return salaryCodeService.postSalaryCode(salaryCodeDTO);
     }
 

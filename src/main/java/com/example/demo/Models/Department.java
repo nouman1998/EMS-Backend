@@ -9,7 +9,7 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
-    String desription;
+    String description;
 
  @OneToMany(mappedBy = "depart")
   private List<Employee> emp;
@@ -19,10 +19,10 @@ public class Department {
 
 
 
-    public Department(Long id, String name, String desription, List<Employee> emp) {
+    public Department(Long id, String name, String description, List<Employee> emp) {
         this.id = id;
         this.name = name;
-        this.desription = desription;
+        this.description = description;
         this.emp = emp;
     }
 
@@ -42,12 +42,12 @@ public class Department {
         this.name = name;
     }
 
-    public String getDesription() {
-        return desription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesription(String desription) {
-        this.desription = desription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 //    public List<Employee> getEmp() {
