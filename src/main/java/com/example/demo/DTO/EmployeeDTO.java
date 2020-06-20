@@ -4,14 +4,15 @@ import com.example.demo.Models.Department;
 import com.example.demo.Models.Job;
 import com.example.demo.Models.LeaveCode;
 import com.example.demo.Models.SalaryCode;
+import org.springframework.web.multipart.MultipartFile;
 
-public class EmployeeDTO {
+public class    EmployeeDTO {
     String name;
     Long mobileNumber;
     String email;
     String address;
     Long pay;
-    String resume;
+    MultipartFile resume;
 
 
     private Department depart;
@@ -22,11 +23,7 @@ public class EmployeeDTO {
 
     private LeaveCode leaveCode;
 
-
-    public EmployeeDTO() {
-    }
-
-    public EmployeeDTO(String name, Long mobileNumber, String email, String address, Long pay, String resume, Department depart, SalaryCode salaryCode, Job job, LeaveCode leaveCode) {
+    public EmployeeDTO(String name, Long mobileNumber, String email, String address, Long pay, MultipartFile resume, Department depart, SalaryCode salaryCode, Job job, LeaveCode leaveCode) {
         this.name = name;
         this.mobileNumber = mobileNumber;
         this.email = email;
@@ -37,6 +34,17 @@ public class EmployeeDTO {
         this.salaryCode = salaryCode;
         this.job = job;
         this.leaveCode = leaveCode;
+    }
+
+    public EmployeeDTO() {
+    }
+
+    public MultipartFile getResume() {
+        return resume;
+    }
+
+    public void setResume(MultipartFile resume) {
+        this.resume = resume;
     }
 
     public String getName() {
@@ -79,13 +87,6 @@ public class EmployeeDTO {
         this.pay = pay;
     }
 
-    public String getResume() {
-        return resume;
-    }
-
-    public void setResume(String resume) {
-        this.resume = resume;
-    }
 
     public Department getDepart() {
         return depart;

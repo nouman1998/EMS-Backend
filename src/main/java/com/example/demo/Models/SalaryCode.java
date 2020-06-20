@@ -1,5 +1,6 @@
 package com.example.demo.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -17,6 +18,8 @@ public class SalaryCode {
     String codeDescription;
     Long grossAmount;
 
+//    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "salaryCode")
     List<Employee> emp;
 

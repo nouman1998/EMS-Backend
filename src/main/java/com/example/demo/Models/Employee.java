@@ -1,5 +1,7 @@
 package com.example.demo.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -19,12 +21,15 @@ public class Employee {
     @ManyToOne()
     private Department depart;
 
+//    @JsonBackReference
     @ManyToOne
     private SalaryCode salaryCode;
 
+//    @JsonBackReference
     @ManyToOne
     private Job job;
 
+//    @JsonBackReference
     @ManyToOne
     private LeaveCode leaveCode;
 
