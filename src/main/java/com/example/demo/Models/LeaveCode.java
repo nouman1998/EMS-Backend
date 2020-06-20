@@ -1,5 +1,8 @@
 package com.example.demo.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,6 +14,8 @@ public class LeaveCode {
     String leaveCode;
     String maxLeaves;
 
+//    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "leaveCode")
     private List<Employee> emp;
 

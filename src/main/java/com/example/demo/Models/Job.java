@@ -2,6 +2,9 @@ package com.example.demo.Models;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -18,6 +21,8 @@ public class Job {
     String jobDuties;
     String jobDescription;
 
+//    @JsonManagedReference
+@JsonIgnore
     @OneToMany(mappedBy = "job")
     private List<Employee> emp;
 
