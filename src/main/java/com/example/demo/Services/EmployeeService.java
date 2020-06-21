@@ -8,6 +8,11 @@ import com.example.demo.Models.Employee;
 import com.example.demo.Respositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,6 +22,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Timestamp;
+import org.springframework.core.io.UrlResource;
+
 
 
 @Service
@@ -39,7 +46,7 @@ public class EmployeeService {
         employee.setEmail(employeeDTO.getEmail());
         employee.setAddress(employeeDTO.getAddress());
         employee.setPay(employeeDTO.getPay());
-        employee.setResume(employeeResumeURL+"Resume//"+employeeDTO.getResume().getOriginalFilename());//
+        employee.setResume(employeeResumeURL+"Resume/"+employeeDTO.getResume().getOriginalFilename());//
         employee.setDepart(employeeDTO.getDepart());
         employee.setJob(employeeDTO.getJob());
         employee.setSalaryCode(employeeDTO.getSalaryCode());
@@ -92,5 +99,17 @@ public class EmployeeService {
 
     public ApiResponse getEmpById(Long id) {
         return  new ApiResponse(Status.Status_Ok,"Fetched Sucessfully",employeeRepository.findById(id));
+    }
+
+    public ResponseEntity<InputStreamResource> getProductImage(String filename)throws IOException {
+        String filepath = CustomConstants.SERVER_PATH+"//"+"serverFiles//"+"//Resume//"+"//products//"+filename;
+        File f = new File(filepath);
+        Resource file = new UrlResource(f.toURI());
+        return  ResponseEntity
+                .ok()
+                .contentLength(file.contentLength())
+                .contentType(
+                        MediaType.parseMediaType("application/pdf"))
+                .body(new InputStreamResource(file.getInputStream()));
     }
 }
