@@ -29,15 +29,18 @@ public class EmployeeController {
     public ApiResponse getEmploye(){
        return employeeService.getEmployee();
     }
+
     @DeleteMapping("/{id}")
     public ApiResponse deleteEmployee(@PathVariable("id") Long id)
     {
         return employeeService.deleteEmp(id);
     }
+
     @GetMapping("/{id}")
     public ApiResponse getEmpById(@PathVariable("id") Long id){
         return  employeeService.getEmpById(id);
     };
+
 
     @RequestMapping(value ="/resume/Resume/{filename:.+}", method = RequestMethod.GET)
     public ResponseEntity<InputStreamResource> getProductImage(@PathVariable("filename") String filename)
