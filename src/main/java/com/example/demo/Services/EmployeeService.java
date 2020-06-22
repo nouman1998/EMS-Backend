@@ -57,7 +57,7 @@ public class EmployeeService {
         return new ApiResponse(Status.Status_Ok,"Successfully Saved",employee);
         }
         else{
-            return new ApiResponse(Status.Status_ERROR,"Unsucesfull ",null);
+            return new ApiResponse(Status.Status_ERROR,"Unsucessfull ",null);
         }
 
     }
@@ -66,7 +66,7 @@ public class EmployeeService {
     public Boolean saveProductImage(MultipartFile file, String name, String unique  ){
         try{
 
-            String UPLOADED_FOLDER_NEW = CustomConstants.SERVER_PATH+"//"+"serverFiles//"+name+"//"+"products"+"//";
+            String UPLOADED_FOLDER_NEW = CustomConstants.SERVER_PATH+"//"+"serverFilesPDF//"+name+"//"+"resume"+"//";
 
             File dir = new File(UPLOADED_FOLDER_NEW);
             dir.setExecutable(true);
