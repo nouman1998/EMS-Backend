@@ -35,20 +35,27 @@ public class EmployeeService {
     @Value("${employee.resume.url}")
     String employeeResumeURL;
 
+    @Value("${employee.profile.url}")
+    String employeeProfileURL;
+
 
     public ApiResponse postEmployee(EmployeeDTO employeeDTO){
         String unique = String.valueOf(new Timestamp(System.currentTimeMillis()).getTime());
-        if(saveProductImage(employeeDTO.getResume(),"Resume",unique))
+        if(saveProductImage(employeeDTO.getResume(),"Resume",unique)&&saveProfileImage(employeeDTO.getProfile(),"Profile",unique))
         {
         Employee employee = new Employee();
         employee.setName(employeeDTO.getName());
         employee.setMobileNumber(employeeDTO.getMobileNumber());
         employee.setEmail(employeeDTO.getEmail());
         employee.setAddress(employeeDTO.getAddress());
-        employee.setPay(employeeDTO.getPay());
+//        employee.setPay(employeeDTO.getPay());
         employee.setResume(employeeResumeURL+"Resume/"+employeeDTO.getResume().getOriginalFilename());//
+            employee.setProfile(employeeProfileURL+"Profile/"+employeeDTO.getProfile().getOriginalFilename());
         employee.setDepart(employeeDTO.getDepart());
         employee.setJob(employeeDTO.getJob());
+        employee.setFname(employeeDTO.getFname());
+        employee.setDob(employeeDTO.getDob());
+
         employee.setSalaryCode(employeeDTO.getSalaryCode());
         employee.setLeaveCode(employeeDTO.getLeaveCode());
 
@@ -67,6 +74,32 @@ public class EmployeeService {
         try{
 
             String UPLOADED_FOLDER_NEW = CustomConstants.SERVER_PATH+"//"+"serverFiles//"+name+"//"+"products"+"//";
+
+            File dir = new File(UPLOADED_FOLDER_NEW);
+            dir.setExecutable(true);
+            dir.setReadable(true);
+            dir.setWritable(true);
+
+            if(!dir.exists()){
+                dir.mkdirs();
+            }
+            byte[] bytes = file.getBytes();
+            Path path = Paths.get(UPLOADED_FOLDER_NEW + unique+ file.getOriginalFilename());
+            Files.write(path, bytes);
+
+        }
+        catch (IOException e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+
+    public Boolean saveProfileImage(MultipartFile file, String name, String unique  ){
+        try{
+
+            String UPLOADED_FOLDER_NEW = CustomConstants.SERVER_PATH+"//"+"serverFiles//"+name+"//"+"images"+"//";
 
             File dir = new File(UPLOADED_FOLDER_NEW);
             dir.setExecutable(true);
@@ -111,5 +144,18 @@ public class EmployeeService {
                 .contentType(
                         MediaType.parseMediaType("application/pdf"))
                 .body(new InputStreamResource(file.getInputStream()));
+    }
+
+    public ResponseEntity<InputStreamResource> getProfileImage(String filename) throws  IOException{
+        String filepath = CustomConstants.SERVER_PATH+"//"+"serverFiles//"+"//Profile//"+"//images//"+filename;
+        File f = new File(filepath);
+        Resource file = new UrlResource(f.toURI());
+        return  ResponseEntity
+                .ok()
+                .contentLength(file.contentLength())
+                .contentType(
+                        MediaType.parseMediaType("image/jpeg"))
+                .body(new InputStreamResource(file.getInputStream()));
+
     }
 }

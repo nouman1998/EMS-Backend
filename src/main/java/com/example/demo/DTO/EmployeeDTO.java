@@ -11,8 +11,11 @@ public class    EmployeeDTO {
     Long mobileNumber;
     String email;
     String address;
-    Long pay;
+//    Long pay;
     MultipartFile resume;
+    MultipartFile profile;
+    String fname;
+
 
 
     private Department depart;
@@ -20,20 +23,23 @@ public class    EmployeeDTO {
     private SalaryCode salaryCode;
 
     private Job job;
-
+    private String dob;
     private LeaveCode leaveCode;
 
-    public EmployeeDTO(String name, Long mobileNumber, String email, String address, Long pay, MultipartFile resume, Department depart, SalaryCode salaryCode, Job job, LeaveCode leaveCode) {
+    public EmployeeDTO(String name,String dob, Long mobileNumber, String fname,String email, String address,  MultipartFile resume,MultipartFile profile, Department depart, SalaryCode salaryCode, Job job, LeaveCode leaveCode) {
         this.name = name;
         this.mobileNumber = mobileNumber;
         this.email = email;
         this.address = address;
-        this.pay = pay;
+//        this.pay = pay;
         this.resume = resume;
         this.depart = depart;
         this.salaryCode = salaryCode;
         this.job = job;
         this.leaveCode = leaveCode;
+        this.profile=profile;
+        this.dob=dob;
+        this.fname=fname;
     }
 
     public EmployeeDTO() {
@@ -79,13 +85,6 @@ public class    EmployeeDTO {
         this.address = address;
     }
 
-    public Long getPay() {
-        return pay;
-    }
-
-    public void setPay(Long pay) {
-        this.pay = pay;
-    }
 
 
     public Department getDepart() {
@@ -118,5 +117,29 @@ public class    EmployeeDTO {
 
     public void setLeaveCode(LeaveCode leaveCode) {
         this.leaveCode = leaveCode;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    public MultipartFile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(MultipartFile profile) {
+        this.profile = profile;
+    }
+
+    public String getFname() {
+        return fname;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 }
