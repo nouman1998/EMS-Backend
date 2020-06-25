@@ -21,8 +21,9 @@ public class EmployeeController {
     EmployeeService employeeService;
 
     @PostMapping("/post")
-    public ApiResponse postEmployee(@RequestParam("resume") MultipartFile resume, EmployeeDTO employeeDTO){
+    public ApiResponse postEmployee(@RequestParam("resume") MultipartFile resume, EmployeeDTO employeeDTO,@RequestParam("profile")MultipartFile profile){
         employeeDTO.setResume(resume);
+        employeeDTO.setProfile(profile);
         return employeeService.postEmployee(employeeDTO);
     }
     @GetMapping("/")
@@ -46,5 +47,11 @@ public class EmployeeController {
     public ResponseEntity<InputStreamResource> getProductImage(@PathVariable("filename") String filename)
             throws IOException {
         return employeeService.getProductImage(filename);
+    }
+
+    @RequestMapping(value ="/resume/Profile/{filename:.+}", method = RequestMethod.GET)
+    public ResponseEntity<InputStreamResource> getProfileImage(@PathVariable("filename") String filename)
+            throws IOException {
+        return employeeService.getProfileImage(filename);
     }
 }
