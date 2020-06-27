@@ -3,6 +3,7 @@ package com.example.demo.Models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -17,6 +18,7 @@ public class Employee {
 
     String resume;
     String fname;
+    String dateOfEntry;
 
 
     String dob;
@@ -168,5 +170,13 @@ this.dob=dob;
 
     public void setFname(String fname) {
         this.fname = fname;
+    }
+
+    public String getDateOfEntry() {
+        return dateOfEntry;
+    }
+
+    public void setDateOfEntry(String dateOfEntry) {
+        this.dateOfEntry = dateOfEntry;
     }
 }
