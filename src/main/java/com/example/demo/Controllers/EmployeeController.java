@@ -49,9 +49,10 @@ public class EmployeeController {
         return employeeService.getProductImage(filename);
     }
 
-    @RequestMapping(value ="/resume/Profile/{filename:.+}", method = RequestMethod.GET)
+    @RequestMapping(value ="/profile/Profile/{filename:.+}", method = RequestMethod.GET)
     public ResponseEntity<InputStreamResource> getProfileImage(@PathVariable("filename") String filename)
             throws IOException {
+
         return employeeService.getProfileImage(filename);
     }
 }

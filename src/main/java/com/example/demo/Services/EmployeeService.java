@@ -22,6 +22,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.core.io.UrlResource;
 
 
@@ -43,6 +47,7 @@ public class EmployeeService {
         String unique = String.valueOf(new Timestamp(System.currentTimeMillis()).getTime());
         if(saveProductImage(employeeDTO.getResume(),"Resume",unique)&&saveProfileImage(employeeDTO.getProfile(),"Profile",unique))
         {
+            DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         Employee employee = new Employee();
         employee.setName(employeeDTO.getName());
         employee.setMobileNumber(employeeDTO.getMobileNumber());
@@ -55,6 +60,8 @@ public class EmployeeService {
         employee.setJob(employeeDTO.getJob());
         employee.setFname(employeeDTO.getFname());
         employee.setDob(employeeDTO.getDob());
+        Date today = new Date();
+        employee.setDateOfEntry( formatter.format(today));
 
         employee.setSalaryCode(employeeDTO.getSalaryCode());
         employee.setLeaveCode(employeeDTO.getLeaveCode());
@@ -110,7 +117,7 @@ public class EmployeeService {
                 dir.mkdirs();
             }
             byte[] bytes = file.getBytes();
-            Path path = Paths.get(UPLOADED_FOLDER_NEW + unique+ file.getOriginalFilename());
+            Path path = Paths.get(UPLOADED_FOLDER_NEW + file.getOriginalFilename());
             Files.write(path, bytes);
 
         }

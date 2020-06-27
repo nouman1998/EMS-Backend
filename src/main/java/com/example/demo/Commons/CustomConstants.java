@@ -26,6 +26,6 @@ public class CustomConstants {
     public static final String SETTING_POSTED = "Setting Successfully saved";
     public static final String SETTINGIMAGE_ERROR = "Image not saved";
     public static final String SETTING_UPDATED = "Setting Updated";
-    public  static   String SERVER_PATH= "F:";
+    public  static   String SERVER_PATH= "C:";
 
 }
